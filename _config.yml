@@ -1,0 +1,25 @@
+title: Yash Tiwari
+author:
+  name:
+  email: 
+description: >- # this means to ignore newlines until "baseurl:"
+  Here i write about the things i find interesting on the intersection of math, 
+  science and computer science (some random stuff as well).
+
+show_excerpts: false # set to true to show excerpts on the homepage
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "yashtx.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+minima:
+  date_format: "%b %-d, %Y"
+  skin: solarized
+
+  social_links:
+    twitter: yashtx
+    github:  yashtx
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

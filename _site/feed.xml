@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-18T12:07:52+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yash Tiwari</title><subtitle>Here i write about the things i find interesting on the intersection of math,  science and computer science (some random stuff as well).</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil}</name></author><entry><title type="html">Value, object, types and classes in python</title><link href="http://localhost:4000/votc/" rel="alternate" type="text/html" title="Value, object, types and classes in python" /><published>2021-10-17T15:20:31+05:30</published><updated>2021-10-17T15:20:31+05:30</updated><id>http://localhost:4000/classes-and-object</id><content type="html" xml:base="http://localhost:4000/votc/">&lt;p&gt;When i was learning Python, i used to get confused between value, type, object and classes. Understanding these concepts are important for learning Object Oriented programming. So, i hope this post helps.&lt;/p&gt;
+
+&lt;h3 id=&quot;value-and-objects&quot;&gt;Value and objects&lt;/h3&gt;
+
+&lt;p&gt;A value is one of the basic things a program works with, like a letter or a number.
+Some value are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;42.0&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'hello'&lt;/code&gt;. These values belongs to different types.&lt;/p&gt;
+
+&lt;p&gt;Objects are python’s abstraction for data. All data in python program is represented by objects or relation between objects. An object has an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;identity&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Difference in value and object is that two different object may have the same value.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'hello'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'hello'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; 
+    &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In python, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;==&lt;/code&gt; Operator checks the identity of objects based on its value. When you use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is&lt;/code&gt; operator you are checking object identity.&lt;/p&gt;
+
+&lt;p&gt;The value of some objects can change. Objects whose value can change are said to be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mutable&lt;/code&gt;; objects whoses value is unchanged once they are created are called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;immutable&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;# immutable
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'two'&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# immutable
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# mutable 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Three object assigned to the names &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a, b and c&lt;/code&gt;  names can be reassigned at any point.
+Every object in python has a type. It types can be discovered by calling the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'type'&lt;/code&gt; built in function. the type is an object too, so it has type of its own, which is called type.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; type(type(42))
+    &amp;lt;class '&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;classes&quot;&gt;Classes&lt;/h3&gt;
+&lt;p&gt;Classes is a mechanism python gives us to create new user defined types from python code.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Using class mechanism we’ve created &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hello&lt;/code&gt; a user defined type. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'y'&lt;/code&gt; is instance of the class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'hello'&lt;/code&gt; . In another word, it is an object and its type is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hello&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;As any other type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'hello'&lt;/code&gt; is object itself and it has type too. this type is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'type'&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The term class and type are an example of two name referring to same concept.
+To avoid this confusion, try to say ‘type’ when you mean a type, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;user-defined class&quot;&lt;/code&gt; (user defined type) when referring to new type created using class construct.&lt;/p&gt;
+
+&lt;h3 id=&quot;instance&quot;&gt;Instance&lt;/h3&gt;
+
+&lt;p&gt;Instance is synonymous to object. Think of it this way. object are instance of types, so &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'42'&lt;/code&gt; is an instance of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'type int'&lt;/code&gt; is equivalent to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'42 is an int object'&lt;/code&gt;.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil}</name></author><summary type="html">When i was learning Python, i used to get confused between value, type, object and classes. Understanding these concepts are important for learning Object Oriented programming. So, i hope this post helps.</summary></entry><entry><title type="html">Artificial Intelligence</title><link href="http://localhost:4000/ai/" rel="alternate" type="text/html" title="Artificial Intelligence" /><published>2021-06-13T15:20:31+05:30</published><updated>2021-06-13T15:20:31+05:30</updated><id>http://localhost:4000/Artificial-intelligence</id><content type="html" xml:base="http://localhost:4000/ai/">&lt;p&gt;Humans does not dominant on this planet due to faster or bigger body. It is our intelligence that we have dominant position on this planet.&lt;/p&gt;
+
+&lt;p&gt;Intelligence might be defined as the ability to learn and perform suitable techniques to solve problems and achieve goals, appropriate to the context in an uncertain, ever-varying world. A fully pre-programmed factory robot is flexible, accurate, and consistent but not intelligent.&lt;/p&gt;
+
+&lt;p&gt;Artificial intelligence deals with simulating the intelligence behaviour in machine.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-brief-history-of-ai&quot;&gt;A brief history of AI&lt;/h3&gt;
+&lt;p&gt;In 1943, Neuroscientist &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;McCulloch&lt;/code&gt; and logician &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pitts&lt;/code&gt; who were wondering at how human brain is able to do all of these kind of complicated things. So they developed a theory of Artificial neural network. They looked at neurons and logic and tried to associate each other and showed how they were kind of connected mathematically.&lt;/p&gt;
+
+&lt;p&gt;In the summer of 1956 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;John McCarthy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Marvin Minsky&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Claude Shannon&lt;/code&gt; etc gathered at Dartmouth conference. John McCarthy coined the term “artificial intelligence” as the topic of the Dartmouth Conference. They had this goal of trying to think that every aspect of learning or any other feature of intelligence can be so precisly described that a machine can be made to simulate it.&lt;/p&gt;
+
+&lt;p&gt;There was a lot of overwhelming optimism that Machine will be capable, within 20 years, of doing any work a man can do. But we know that this didn’t really happened. It became first AI winter, a period where AI research was not very active and was not well funded.&lt;/p&gt;
+
+&lt;p&gt;What went wrong? these were really smart people. They just got really ahead of thier time. There was two problem, one is compute was simply not there and second was limited information.&lt;/p&gt;
+
+&lt;p&gt;In 1970 and 80s there was renewed generation of people getting excited about AI again. This time it was all about knowledge. There was alot of expert system were created. And the idea is that if you could encode expert’s knowledge about the world then you can do amazing things and at that time knowledge was encoded in generally a set of rules.&lt;/p&gt;
+
+&lt;p&gt;But it didn’t last long. knowledge as determinstic rules was simply not rich enough. Problem with knowledge based expert system was how to model uncertainity. Systems required considerable manual effort to create rules and were hard to maintain. A pattern of over-promising and under-delivering that seems to plague AI people, led to collapse of the field and the kind of as second AI winter.&lt;/p&gt;
+
+&lt;p&gt;In 1969, A book by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Minsky&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Papert&lt;/code&gt; called Perceptron showed that linear model could not solve XOR. And it killed neural network research.&lt;/p&gt;
+
+&lt;p&gt;But there was still handful of people still interesed in power of neural networks. In 1986, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hinton&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Rumelhardt&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Williams&lt;/code&gt; popularized &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;backpropogation&lt;/code&gt; for training multi-layer Neural Network. After 3 years &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lecun&lt;/code&gt; applied Convulation Neural Network z(CNN) to recognize handwritten digit for USPS.&lt;/p&gt;
+
+&lt;p&gt;On 11 May 1997, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Deep Blue&lt;/code&gt; became the first computer chess-playing system to beat a reigning world chess champion, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Garry Kasparov&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;But it wasn’t until 2012 this area if neural network really took off under name deep learning. In 2012, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AlexNet&lt;/code&gt; gave huge gain in object recognition and transformed computer vision community overnight. After 4 years, A deep reinforcement learning system defeated world champion &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lee sedol&lt;/code&gt; in Go. Go is orders of more magnitude harder than chess.&lt;/p&gt;
+
+&lt;p&gt;AI has drawn from many different field, many of technique we use in modern AI for example Minimax games came from Economics, Maximum likehood from Statistics, Stochastic gradient desenct from Optimization, first-order-logic from Logic etc. are completely unrelated to AI.&lt;/p&gt;
+
+&lt;h3 id=&quot;types-of-ai&quot;&gt;Types of AI&lt;/h3&gt;
+&lt;p&gt;AI is mainly classified into 3 categories (based on technology).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1.) Artificial narrow Intelligence (ANI)&lt;/strong&gt; : Sometimes referred to as Weak AI, Artificial Narrow Intelligence is AI that specializes in one area. There’s AI that can beat the world chess champion in chess, but that’s the only thing it does.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.) Artificial General Intelligence (AGI)&lt;/strong&gt; : Sometimes referred to as Strong AI, or Human-Level AI, Artificial General Intelligence refers to a computer that is as smart as a human across the board—a machine that can perform any intellectual task that a human being can.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3.) Artificial Superintelligence (ASI)&lt;/strong&gt; : Superintelligence defined as “an intellect that is much smarter than the best human brains in practically every field, including scientific creativity, general wisdom and social skills.” ASI is the reason the topic of AI is hot and why immortality or extinction of humans may or may not happen.&lt;/p&gt;
+
+&lt;p&gt;As of now, humans have conquered the lowest caliber of AI—ANI—in many ways, and it’s everywhere. The AI Revolution is the road from ANI, through AGI, to ASI—a road we may or may not survive but that, either way, will change everything.&lt;/p&gt;
+
+&lt;h3 id=&quot;sub-fields-of-artificial-intelligence&quot;&gt;Sub-fields of Artificial Intelligence&lt;/h3&gt;
+&lt;p&gt;People are trying to make intelligence system with capabilities that humans have. We can see and perceive the world, recognize object, we can grasp cup and drink water and not spill it. We can communicate using language. We know facts about the world, declariative knowledge such as capital of India and procedural knowledge like how to ride a bike. we can reason with this knowledge and then, really importantly, we are not born with all of this, right? We learn these over time through experience. Learning seems to be kind of this critical ingredient which drive alot of success in AI today. Below are some sub-field of AI.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/flowchart_ai.jpeg&quot; alt=&quot; flowchart of AI &quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perception&lt;/strong&gt; :
+Any intelligent system/agent should be able to see and perceive the world around it. Machine perception is the ability to use input from sensors (such as cameras, microphones, and active lidar, sonar etc) to deduce aspects of the world. Applications include speech recognition, facial recognition, and object recognition.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Motion and Manipulation&lt;/strong&gt; :
+AI is heavily used in robotics. Advanced robotic arms and other industrial robots, widely used in modern factories, can learn from experience.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Natural language processing (NLP)&lt;/strong&gt; :
+NLP allows machines to read and understand human language.Some straightforward applications of natural language processing include information retrieval, speech recognition, question answering and machine translation etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Knowledge representation&lt;/strong&gt; :
+ is central to AI research. Some “expert systems” attempt to gather explicit knowledge possessed by experts in some narrow domain.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reasoning and Problem solving&lt;/strong&gt; :
+Early researchers developed algorithms that imitated step-by-step reasoning that humans use when they solve puzzles or make logical deductions. By the late 1980s and 1990s, AI research had developed methods for dealing with uncertain or incomplete information, employing concepts from probability and economics. These algorithms proved to be insufficient for solving large reasoning problems. They became exponentially slower as the problems grew larger. Even humans rarely use the step-by-step deduction that early AI research could model. They solve most of their problems using fast, intuitive judgments.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning&lt;/strong&gt; :
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Machine learning&lt;/code&gt; uses algorithm to look for pattern in massive amount of data and make informed decision based on what it has learned.
+Machine learning is the process that powers many of the services we use today—recommendation systems like those on Netflix, YouTube, and Spotify; search engines like Google and Baidu; social-media feeds like Facebook and Twitter; voice assistants like Siri and Alexa. The list goes on.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Deep learning&lt;/code&gt; is subset of Machine learning. Deep learning structures algorithms in layers to create an “artificial neural network” that can learn and make intelligent decisions on its own.&lt;/p&gt;
+
+&lt;p&gt;Machine learning comes in three flavors: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;supervised&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unsupervised&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reinforcement&lt;/code&gt;. If any this uses deep neural network then add deep ahead of technology i.e. deep supervised learning.&lt;/p&gt;
+
+&lt;p&gt;In supervised learning, the most prevalent, the data is labeled to tell the machine exactly what patterns it should look for. Think of it as something like a sniffer dog that will hunt down targets once it knows the scent it’s after. That’s what you’re doing when you press play on a Youtube video.You are telling the algorithm to find similar videos.&lt;/p&gt;
+
+&lt;p&gt;In unsupervised learning, the data has no labels. The machine just looks for whatever patterns it can find. This is like letting a dog smell tons of different objects and sorting them into groups with similar smells. Unsupervised techniques aren’t as popular because they have less obvious applications.&lt;/p&gt;
+
+&lt;p&gt;A reinforcement algorithm learns by trial and error to achieve a clear objective. It tries out lots of different things and is rewarded or penalized depending on whether its behaviors help or hinder it from reaching its objective.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/flowchart_ml.jpeg&quot; alt=&quot; flowchart of ML&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading !&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil}</name></author><summary type="html">Humans does not dominant on this planet due to faster or bigger body. It is our intelligence that we have dominant position on this planet.</summary></entry><entry><title type="html">Initial Commit</title><link href="http://localhost:4000/initial-commit/" rel="alternate" type="text/html" title="Initial Commit" /><published>2021-03-17T15:20:31+05:30</published><updated>2021-03-17T15:20:31+05:30</updated><id>http://localhost:4000/Initial-commit</id><content type="html" xml:base="http://localhost:4000/initial-commit/">&lt;p&gt;This is my first post. Through this blog, I hope to share technical, non-technical, all kind of stuff that I discover and/or create.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil}</name></author><summary type="html">This is my first post. Through this blog, I hope to share technical, non-technical, all kind of stuff that I discover and/or create.</summary></entry></feed>
